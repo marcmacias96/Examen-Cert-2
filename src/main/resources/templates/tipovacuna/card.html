@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body>
+
+	<!-- header-start -->
+	<header th:replace="layout :: frgHeader"></header>
+	<!-- header-end -->
+	<h2> <span th:text="${tipovacuna.nombre}"></span></h2>
+	<hr/>
+    <h3>Enfermedad:<span th:text="${tipovacuna.enfermedad}"></span></h3>
+    <h3>N°Dosis:<span th:text=${tipovacuna.numeroDosis}></span></h3>
+	<h3>Dosis: <span th:text=${tipovacuna.dosis}></span></h3>
+	<hr/>
+	<h2>V&iacute;a de administraci&oacute;n:<span th:text=${tipovacuna.via}></span></h2>
+	<h3>Edades:<span th:text="${tipovacuna.edades}"></span></h3>
+	<footer th:replace="layout :: frgFooter"></footer>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

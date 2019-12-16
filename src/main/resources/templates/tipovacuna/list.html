@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body>
+
+	<!-- header-start -->
+	<header th:replace="layout :: frgHeader"></header>
+	<!-- header-end -->
+
+	<h3>
+		<span th:text="${title}"></span>
+	</h3>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Enfermedad</th>
+				<th>Nombre</th>
+				<th>N°Dosis</th>
+				<th>Dosis</th>
+				<th>V&iacute;a de administraci&oacute;n</th>
+				<th>Edades y refuerzo</th>
+				<th><a title="Nuevo" th:href="@{/tipovacuna/create}">Nuevo</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="tipovacuna : ${lista}">
+				<td th:text="${tipovacuna.enfermedad}"></td>
+				<td th:text="${tipovacuna.nombre}"></td>
+				<td th:text="${tipovacuna.numeroDosis}"></td>
+				<td th:text="${tipovacuna.dosis}"></td>
+				<td th:text="${tipovacuna.via}"></td>
+				<td th:text="${tipovacuna.edades}"></td>
+				<td><a title="Editar"
+					th:href="@{/tipovacuna/update/} + ${tipovacuna.idtipovacuna}">Editar</a>&nbsp;&nbsp;<a
+					title="Ver" th:href="@{/tipovacuna/retrieve/} + ${tipovacuna.idtipovacuna}">Ver
+				</a></td>
+			</tr>
+
+		</tbody>
+	</table>
+
+
+	<footer th:replace="layout :: frgFooter"></footer>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

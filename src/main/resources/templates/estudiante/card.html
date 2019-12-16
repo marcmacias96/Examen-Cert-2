@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body>
+
+	<!-- header-start -->
+	<header th:replace="layout :: frgHeader"></header>
+	<!-- header-end -->
+	<h2> <span th:text="${estudiante.nombre}"></span></h2>
+	<hr/>
+    <h3>Fecha de nacimiento:<span th:text="${#dates.format(estudiante.fechaNacimiento,'dd-MM-yyyy')}"></span></h3>
+    <h3>Sexo:<span th:text=${estudiante.sexo}></span></h3>
+    <h3>Lateralidad:<span th:text=${estudiante.lateralidad}></span></h3>	
+	<hr/>
+	<h2>Observaci&oacute;n:<span th:text=${estudiante.observacion}></span></h2>
+	<h2>Procedencia: <span th:text=${estudiante.procedencia}></span></h2>
+	<h3>Fecha de ingreso:<span th:text="${#dates.format(estudiante.fechaIngreso,'dd-MM-yyyy')}"></span></h3>
+	<footer th:replace="layout :: frgFooter"></footer>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
