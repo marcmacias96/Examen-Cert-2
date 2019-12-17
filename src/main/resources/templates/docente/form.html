@@ -1,10 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="layout :: head"></head>
 <body>
+<header th:replace="layout :: frgHeader"></header>
+<section class="about_us padding_top pb-5">
+    <div class="container pb-5">
+        <div  class="d-flex flex-column">
+            <!-- Begin Page Content -->
+            <div class="container">
+                <div class="container-fluid">
+                    <br />
+                    <div class="card col-md-12">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="content col-sm-1">
+                                    <i class="far fa-plus-square fa-2x"></i>
+                                </div>
+                                <h3 class="card-title col-sm-10" th:text="${title}"></h3>
+                            </div>
+                            <hr />
 
+                            <form th:action="@{/docente/save}" th:object="${docente}" method="post">
+
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <i class="ti-user"></i>
+                                        <label class="h5 col-form-label">&nbsp;Grado</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="single-input" type="text"
+                                               th:field="*{grado}"
+                                               th:errorclass="'form-control is-invalid'" /></input>
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('grado')}"
+                                               th:errors="*{grado}"></small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <i class="ti-user"></i>
+                                        <label class="h5 col-form-label">&nbsp;Institucion</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="single-input" type="text"
+                                               th:field="*{institucion}"
+                                               th:errorclass="'form-control is-invalid'" /></input>
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('institucion')}"
+                                               th:errors="*{institucion}"></small>
+                                    </div>
+                                </div>
+
+
+                                <hr />
+
+                                <div class="form-group row">
+                                    <div class="content col-sm-3">
+                                        <i class="ti-id-badge"></i>
+                                        <label class="h5 col-form-label">Fecha Ingreso</label>
+                                    </div>
+                                    <div class="content col-sm-6">
+                                        <input class="single-input" type="date"
+                                               th:field="*{fechaIngreso}"
+                                               th:errorclass="'form-control is-invalid'" /></textarea>
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('fechaIngreso')}"
+                                               th:errors="*{fechaIngreso}"></small>
+                                    </div>
+                                </div>
+
+
+                                <hr />
+
+                                <div class="form-group row">
+                                    <div class="content col-sm-3">
+                                        <i class="ti-email"></i>
+                                        <label class="h5 col-form-label">&nbsp;Email:</label>
+                                    </div>
+                                    <div class="content col-sm-6">
+                                        <input class="single-input" type="text"
+                                               th:field="*{email}"
+                                               th:errorclass="'form-control is-invalid'" /></textarea>
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('email')}"
+                                               th:errors="*{email}"></small>
+                                    </div>
+                                </div>
+                                <input type="hidden" th:field="*{idpersona}" />
+
+                                <div class="col-12 d-flex flex-row-reverse">
+                                    <a class="genric-btn  danger circle"
+                                       th:href="@{/docente/list}">
+                                        <i class="ti-close"></i>&nbsp; Cancel</a>
+                                    <button class="genric-btn success circle" type="submit">
+                                        <i class="ti-save"></i>&nbsp; Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer th:replace="layout :: frgFooter"></footer>
 </body>
 </html>

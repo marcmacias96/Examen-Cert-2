@@ -1,5 +1,6 @@
 package com.escolastico.web.controllers;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -88,9 +89,14 @@ public class DocenteController {
 		List<Docente> lista = service.findAll();
 		model.addAttribute("title", "Listado de docentes");
 		model.addAttribute("lista", lista);
+
 		return "docente/list";		
 	}
 		
-	
+	public int Age (Calendar date) {
+
+		return 1;
+
+	}
 	
 }

@@ -1,9 +1,11 @@
-var domainURL = "http://localhost:8080/";
 
-function objectifyForm(formArray) {
-	var returnArray = {};
-	for (var i = 0; i < formArray.length; i++) {
-		returnArray[formArray[i]['name']] = formArray[i]['value'];
-	}
-	return returnArray;
-}
+
+
+$(document).ready(function(){
+
+	$("#success-alert").fadeTo(2000,1).slideUp(500, function(){
+		$("#success-alert").slideUp(500);
+	});
+
+
+}); 

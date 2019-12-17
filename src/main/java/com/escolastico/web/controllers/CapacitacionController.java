@@ -1,9 +1,8 @@
 package com.escolastico.web.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
+import com.escolastico.web.models.entities.Docente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,20 +15,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.escolastico.web.models.entities.Capacitacion;
-import com.escolastico.web.models.services.IAvalService;
 import com.escolastico.web.models.services.ICapacitacionService;
 import com.escolastico.web.models.services.IDocenteService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/capacitacion")
 public class CapacitacionController {
 
 	@Autowired
-	private ICapacitacionService service;
+	private ICapacitacionService srvCap;
+
+	@Autowired
+	private IDocenteService srvDoc;
 
 	@GetMapping(value = "/create/{id}")
-	public String create(@PathVariable(value = "id") Integer id, Model model) {
+	public String create(@PathVariable(value = "id") Long id, Model model) {
 		Capacitacion capacitacion = new Capacitacion();
+		capacitacion.setDocenteId(id);
 		model.addAttribute("capacitacion", capacitacion);
 		model.addAttribute("title", "Nuevo registro");
 		return "capacitacion/form";
@@ -37,7 +41,7 @@ public class CapacitacionController {
 	
 	@GetMapping(value = "/update/{id}")
 	public String update(@PathVariable(value = "id") Long id, Model model) {
-		Capacitacion capacitacion = service.findById(id);		
+		Capacitacion capacitacion = srvCap.findById(id);
 		model.addAttribute("capacitacion", capacitacion);
 		model.addAttribute("title", "Actualización de registro");
 		return "capacitacion/form";
@@ -51,14 +55,14 @@ public class CapacitacionController {
 	@GetMapping(value = "/delete/{id}")
 	public String delete(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash) {		
 		try {
-			service.delete(id);			
+			srvCap.delete(id);
 		} catch (Exception ex) {			
 		}
 		return "capacitacion/list";
 	}
 
 	@PostMapping(value = "/save")
-	public String save(@RequestBody @Valid Capacitacion capacitacion, BindingResult result, Model model) {
+	public String save( @Valid Capacitacion capacitacion, BindingResult result, Model model) {
 		
 				
 		try {			
@@ -66,21 +70,25 @@ public class CapacitacionController {
 			{
 				model.addAttribute("capacitacion", capacitacion);
 				if(capacitacion.getIdcapacitacion() == null) {
-					model.addAttribute("title","Nuevo registro");					
+					model.addAttribute("title","Nuevo registro");
 				}
 				else {
 					model.addAttribute("title","Actualización de registro");
 				}
-								
+
 				return "capacitacion/form";
 			}
-			
-			service.save(capacitacion);
+			System.out.println(capacitacion.getDocenteId());
+			Docente docente = srvDoc.findById(capacitacion.getDocenteId());
+			capacitacion.setDocente(docente);
+
+			srvCap.save(capacitacion);
 						
 			return "capacitacion/list";			
 			
 		} catch (Exception ex) {			
 			model.addAttribute("title","Error al guardar el registro");
+
 			return "capacitacion/form";
 		}		
 	}

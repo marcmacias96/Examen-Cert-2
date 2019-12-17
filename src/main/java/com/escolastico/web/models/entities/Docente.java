@@ -2,12 +2,9 @@ package com.escolastico.web.models.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -49,6 +46,9 @@ public class Docente extends Persona implements Serializable {
 	@NotNull
 	@Column(name = "fecha_ingreso")
 	private Calendar fechaIngreso;
+
+	@OneToMany(mappedBy = "docente", fetch = FetchType.LAZY)
+	private List<Capacitacion> capacitacionList;
 	
 	public String getGrado() {
 		return grado;
@@ -81,7 +81,12 @@ public class Docente extends Persona implements Serializable {
 	public void setFechaIngreso(Calendar fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	
-	
-		
+
+	public List<Capacitacion> getCapacitacionList() {
+		return capacitacionList;
+	}
+
+	public void setCapacitacionList(List<Capacitacion> capacitacionList) {
+		this.capacitacionList = capacitacionList;
+	}
 }

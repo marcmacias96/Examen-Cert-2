@@ -2,16 +2,9 @@ package com.escolastico.web.models.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -51,6 +44,21 @@ public class Capacitacion implements Serializable {
 	@NotNull
 	@Column(name="fecha")	
 	private Calendar fecha;
+
+	@JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
+	@ManyToOne
+	private Docente docente;
+
+	public Long getDocenteId() {
+		return docenteId;
+	}
+
+	public void setDocenteId(Long docenteId) {
+		this.docenteId = docenteId;
+	}
+
+	@Transient
+	private Long docenteId;
 
 	public Capacitacion() {
 		super();	
@@ -102,6 +110,11 @@ public class Capacitacion implements Serializable {
 		this.titulo = titulo;
 	}
 
-	
- 
+	public Docente getDocente() {
+		return docente;
+	}
+
+	public void setDocente(Docente docente) {
+		this.docente = docente;
+	}
 }

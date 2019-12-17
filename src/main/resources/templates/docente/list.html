@@ -6,43 +6,60 @@
 	<!-- header-start -->
 	<header th:replace="layout :: frgHeader"></header>
 	<!-- header-end -->
+	<section class="about_us padding_top pb-5">
+		<div class="container  pb-5">
+			<div class="card">
+				<div class="card-title">
+					<h3>
+						<span th:text="${title}"></span>
+					</h3>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<table border="1"  class="table table-hover">
+							<thead>
+							<tr>
+								<th class="align-middle text-center">C&eacute;dula</th>
+								<th class="align-middle text-center">Nombre</th>
+								<th class="align-middle text-center">Fec.Nacimiento</th>
+								<th class="align-middle text-center">Edad</th>
+								<th class="align-middle text-center">Sexo</th>
+								<th class="align-middle text-center">Fec.Ingreso</th>
+								<th class="align-middle text-center">Email</th>
+								<th class="align-middle text-center">Grado</th>
+								<th class="align-middle text-center">Institucion</th>
+								<th class="align-middle text-center"><a title="Nuevo" class="genric-btn info circle" th:href="@{/docente/create}">Nuevo</a></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="docente : ${lista}">
+								<td  class="align-middle text-center" th:text="${docente.cedula}"></td>
+								<td  class="align-middle text-center" th:text="${docente.nombre}"></td>
+								<td  class="align-middle text-center" th:text="${#dates.format(docente.fechaNacimiento,'dd-MM-yyyy')}"></td>
+								<td  class="align-middle text-center" th:text="${#dates.format(docente.fechaNacimiento,'dd-MM-yyyy')}"></td>
+								<td  class="align-middle text-center" th:text="${docente.sexo}"></td>
+								<td  class="align-middle text-center" th:text="${#dates.format(docente.fechaIngreso,'dd-MM-yyyy')}"></td>
+								<td  class="align-middle text-center" th:text="${docente.email}"></td>
+								<td  class="align-middle text-center" th:text="${docente.grado}"></td>
+								<td  class="align-middle text-center" th:text="${docente.institucion}"></td>
+								<td  class="align-middle text-center" ><a title="Editar"
+																		class="genric-btn btn-sm info-border circle"  th:href="@{/docente/update/} + ${docente.idpersona}">Editar</a>&nbsp;&nbsp;<a
+									class="genric-btn btn-sm info-border circle"	title="Ver" th:href="@{/docente/retrieve/} + ${docente.idpersona}">Ver
+								</a></td>
+							</tr>
 
-	<h3>
-		<span th:text="${title}"></span>
-	</h3>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-	<table border="1">
-		<thead>
-			<tr>
-				<th>C&eacute;dula</th>
-				<th>Nombre</th>
-				<th>Fec.Nacimiento</th>
-				<th>Sexo</th>
-				<th>Fec.Ingreso</th>
-				<th>Email</th>
-				<th>Grado</th>
-				<th>Institucion</th>
-				<th><a title="Nuevo" th:href="@{/docente/create}">Nuevo</a></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="docente : ${lista}">
-				<td th:text="${docente.cedula}"></td>
-				<td th:text="${docente.nombre}"></td>
-				<td th:text="${#dates.format(docente.fechaNacimiento,'dd-MM-yyyy')}"></td>
-				<td th:text="${docente.sexo}"></td>
-				<td th:text="${#dates.format(docente.fechaIngreso,'dd-MM-yyyy')}"></td>
-				<td th:text="${docente.email}"></td>
-				<td th:text="${docente.grado}"></td>
-				<td th:text="${docente.institucion}"></td>				
-				<td><a title="Editar"
-					th:href="@{/docente/update/} + ${docente.idpersona}">Editar</a>&nbsp;&nbsp;<a
-					title="Ver" th:href="@{/docente/retrieve/} + ${docente.idpersona}">Ver
-				</a></td>
-			</tr>
 
-		</tbody>
-	</table>
+
+
+
 
 
 	<footer th:replace="layout :: frgFooter"></footer>
