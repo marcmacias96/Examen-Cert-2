@@ -1,6 +1,10 @@
 package com.escolastico.web.models.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.List;
 
@@ -49,6 +53,14 @@ public class Docente extends Persona implements Serializable {
 
 	@OneToMany(mappedBy = "docente", fetch = FetchType.LAZY)
 	private List<Capacitacion> capacitacionList;
+
+	public Long getAge(){
+		LocalDate birthDate =LocalDateTime.ofInstant(getFechaNacimiento().toInstant(), getFechaNacimiento().getTimeZone().toZoneId()).toLocalDate();
+		System.out.println(birthDate);
+		LocalDate now = LocalDate.now();
+		long years = ChronoUnit.YEARS.between(birthDate, now);
+		return  years;
+	}
 	
 	public String getGrado() {
 		return grado;

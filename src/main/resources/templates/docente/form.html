@@ -12,7 +12,7 @@
                     <br />
                     <div class="card col-md-12">
                         <div class="card-body">
-                            <div class="form-group row">
+                            <div class="form-group row pt-2">
                                 <div class="content col-sm-1">
                                     <i class="far fa-plus-square fa-2x"></i>
                                 </div>
@@ -21,30 +21,94 @@
                             <hr />
 
                             <form th:action="@{/docente/save}" th:object="${docente}" method="post">
-
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <i class="ti-user"></i>
+                                        <label class="h5 col-form-label">&nbsp;Nombre:</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="single-input" type="text"
+                                               th:field="*{nombre}"
+                                               th:errorclass="'form-control is-invalid'" />
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('nombre')}"
+                                               th:errors="*{nombre}"></small>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <i class="ti-id-badge"></i>
+                                        <label class="h5 col-form-label">&nbsp;Cedula:</label>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input class="single-input" type="text"
+                                               th:field="*{cedula}"
+                                               th:errorclass="'form-control is-invalid'" />
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('cedula')}"
+                                               th:errors="*{cedula}"></small>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group row">
+                                    <div class="content col-sm-3">
+                                        <i class="ti-calendar"></i>
+                                        <label class="h5 col-form-label">Fecha Nacimiento:</label>
+                                    </div>
+                                    <div class="content col-sm-6">
+                                        <input class="single-input" type="date"
+                                               th:field="*{fechaNacimiento}"
+                                               th:errorclass="'form-control is-invalid'" />
+                                        <small class="invalid-feedback"
+                                               th:if="${#fields.hasErrors('fechaNacimiento')}"
+                                               th:errors="*{fechaNacimiento}"></small>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="form-group row ">
+                                    <div class="content col-sm-3">
+                                        <i class="ti-direction-alt"></i>
+                                        <label class="h5 col-form-label">&nbsp;Sexo:</label>
+                                    </div>
+                                    <div class="content col-sm-6">
+                                        <select class="default-select" th:field="*{sexo}">
+                                            <option value=0>--Seleccione--</option>
+                                            <option th:value="Hombre" >Hombre</option>
+                                            <option th:value="Mujer" >Mujer</option>
+                                        </select>
+                                    </div>
+
+                                    <small class="invalid-feedback"
+                                           th:if="${#fields.hasErrors('sexo')}"
+                                           th:errors="*{sexo}"
+                                    ></small>
+                                </div>
+                                <hr />
+                                <div class="form-group row">
+                                    <div class="col-sm-3">
+                                        <i class="ti-medall"></i>
                                         <label class="h5 col-form-label">&nbsp;Grado</label>
                                     </div>
                                     <div class="col-sm-6">
                                         <input class="single-input" type="text"
                                                th:field="*{grado}"
-                                               th:errorclass="'form-control is-invalid'" /></input>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('grado')}"
                                                th:errors="*{grado}"></small>
                                     </div>
                                 </div>
+                                <hr />
                                 <div class="form-group row">
                                     <div class="col-sm-3">
-                                        <i class="ti-user"></i>
+                                        <i class="ti-home"></i>
                                         <label class="h5 col-form-label">&nbsp;Institucion</label>
                                     </div>
                                     <div class="col-sm-6">
                                         <input class="single-input" type="text"
                                                th:field="*{institucion}"
-                                               th:errorclass="'form-control is-invalid'" /></input>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('institucion')}"
                                                th:errors="*{institucion}"></small>
@@ -56,13 +120,13 @@
 
                                 <div class="form-group row">
                                     <div class="content col-sm-3">
-                                        <i class="ti-id-badge"></i>
+                                        <i class="ti-calendar"></i>
                                         <label class="h5 col-form-label">Fecha Ingreso</label>
                                     </div>
                                     <div class="content col-sm-6">
                                         <input class="single-input" type="date"
                                                th:field="*{fechaIngreso}"
-                                               th:errorclass="'form-control is-invalid'" /></textarea>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('fechaIngreso')}"
                                                th:errors="*{fechaIngreso}"></small>
@@ -80,7 +144,7 @@
                                     <div class="content col-sm-6">
                                         <input class="single-input" type="text"
                                                th:field="*{email}"
-                                               th:errorclass="'form-control is-invalid'" /></textarea>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('email')}"
                                                th:errors="*{email}"></small>
@@ -91,9 +155,9 @@
                                 <div class="col-12 d-flex flex-row-reverse">
                                     <a class="genric-btn  danger circle"
                                        th:href="@{/docente/list}">
-                                        <i class="ti-close"></i>&nbsp; Cancel</a>
+                                        <i class="ti-close"></i>&nbsp; Cancelar</a>
                                     <button class="genric-btn success circle" type="submit">
-                                        <i class="ti-save"></i>&nbsp; Save
+                                        <i class="ti-save"></i>&nbsp; Guardar
                                     </button>
                                 </div>
                             </form>

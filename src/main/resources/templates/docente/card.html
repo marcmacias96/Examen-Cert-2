@@ -24,7 +24,7 @@
 								<div class="col-6 d-flex flex-row-reverse">
 									<div class="form-group px-2">
 										<a class="genric-btn info circle" th:href="@{/capacitacion/create/} + ${docente.idpersona}">
-											<i class="ti-trash"></i>&nbsp; Nueva Capacitacion</a>
+											<i class="ti-plus"></i>&nbsp; Nueva Capacitacion</a>
 									</div>
 									<div class="form-group px-2">
 										<a class="genric-btn danger circle" th:href="@{/docente/delete/} + ${docente.idpersona}">
@@ -46,7 +46,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="far fa-sticky-note"></i> <label class="h5 col-form-label">&nbsp;ID Card:</label>
+											<i class="ti-id-badge"></i> <label class="h5 col-form-label">&nbsp;ID Card:</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${docente.cedula}"></h5>
@@ -60,7 +60,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="far fa-sticky-note"></i> <label class="h5 col-form-label">&nbsp; Grado:</label>
+											<i class="ti-medall"></i> <label class="h5 col-form-label">&nbsp; Grado:</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${docente.grado}"></h5>
@@ -75,7 +75,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="far fa-sticky-note"></i> <label class="h5 col-form-label">&nbsp;Institucion:</label>
+											<i class="ti-home"></i> <label class="h5 col-form-label">&nbsp;Institucion:</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${docente.institucion}"></h5>
@@ -90,7 +90,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="far fa-sticky-note"></i> <label class="h5 col-form-label">&nbsp;Email:</label>
+											<i class="ti-email"></i> <label class="h5 col-form-label">&nbsp;Email:</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${docente.email}"></h5>
@@ -105,7 +105,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="far fa-sticky-note"></i> <label class="h5 col-form-label">&nbsp;Fecha de Nacimiento</label>
+											<i class="ti-calendar"></i> <label class="h5 col-form-label">&nbsp;Fecha de Nacimiento</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${#dates.format(docente.fechaNacimiento,'dd-MM-yyyy')}"></h5>
@@ -120,12 +120,18 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="far fa-sticky-note"></i> <label class="h5 col-form-label">&nbsp;Fecha de Ingreso</label>
+											<i class="ti-calendar"></i> <label class="h5 col-form-label">&nbsp;Fecha de Ingreso</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${#dates.format(docente.fechaIngreso,'dd-MM-yyyy')}"></h5>
 										</div>
 									</div>
+								</div>
+							</div>
+							<hr />
+							<div class="row">
+								<div class="col-md-12">
+									<div id="CapsList" class="container" ></div>
 								</div>
 							</div>
 
@@ -136,9 +142,6 @@
 			</div>
 		</div>
 	</div>
-</section>
-<section class="about_us pb-5">
-	<div id="CapsList"  class="container"></div>
 </section>
 <footer th:replace="layout :: frgFooter"></footer>
 <script th:src="@{/js/AjaxFunctions/docenteCard.js}"></script>
