@@ -58,6 +58,7 @@ public class CapacitacionController {
 	@GetMapping(value = "/list/{id}")
 	public String list(@PathVariable(value = "id") Long id, Model model) {
 		List<Capacitacion> capacitacionList = srvCap.findByDocente(id);
+		model.addAttribute("title", "Capacitaciones");
 		model.addAttribute("capacitacionList",capacitacionList);
 		return "capacitacion/list";
 	}
@@ -88,13 +89,12 @@ public class CapacitacionController {
 
 				return "capacitacion/form";
 			}
-			System.out.println(capacitacion.getDocenteId());
 			Docente docente = srvDoc.findById(capacitacion.getDocenteId());
 			capacitacion.setDocente(docente);
 
 			srvCap.save(capacitacion);
 						
-			return "capacitacion/list";			
+			return "redirect:/docente/retrieve/" + docente.getIdpersona() ;
 			
 		} catch (Exception ex) {			
 			model.addAttribute("title","Error al guardar el registro");

@@ -5,6 +5,10 @@
 <section class="about_us padding_top pb-5">
 	<div class="container pb-5">
 		<header th:replace="layout :: frgHeader"></header>
+		<form th:object="${docente}">
+			<input type="hidden" th:field="*{idpersona}" />
+		</form>
+
 		<div  class="d-flex flex-column">
 			<!-- Begin Page Content -->
 			<div class="container">
@@ -133,9 +137,10 @@
 		</div>
 	</div>
 </section>
-<section class="about_us padding_top pb-5">
-	<div id="CapsList" class="container pb-5"></div>
+<section class="about_us pb-5">
+	<div id="CapsList"  class="container"></div>
 </section>
 <footer th:replace="layout :: frgFooter"></footer>
+<script th:src="@{/js/AjaxFunctions/docenteCard.js}"></script>
 </body>
 </html>

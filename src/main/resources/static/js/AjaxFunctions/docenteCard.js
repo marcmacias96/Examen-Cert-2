@@ -6,9 +6,10 @@ function setContainer(response){
 function listCapsDocente () {
     var id = $("#idpersona").val();
     $.ajax({
-        url : "/antecedentePatologicoPersonal/list/" + id,
+        url : "/capacitacion/list/" + id,
         method : 'GET',
         success : function(response){
+
             setContainer(response);
         },
         error : function(err){
@@ -17,5 +18,10 @@ function listCapsDocente () {
     });
 }
 
+$(document).ready(function(){
+    listCapsDocente();
+
+
+});
 
 
