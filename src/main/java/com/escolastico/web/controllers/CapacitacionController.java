@@ -57,6 +57,13 @@ public class CapacitacionController {
 		return "capacitacion/form";
 	}
 
+	@GetMapping(value="/retrieve/{id}")
+	public String retrieve(@PathVariable(value="id") Long id, Model model) {
+		Capacitacion capacitacion = srvCap.findById(id);
+		model.addAttribute("capacitacion", capacitacion);
+		return "capacitacion/card";
+	}
+
 	@GetMapping(value = "/list/{id}")
 	public String list(@PathVariable(value = "id") Long id, Model model) {
 		List<Capacitacion> capacitacionList = srvCap.findByDocente(id);
@@ -71,7 +78,7 @@ public class CapacitacionController {
 			srvCap.delete(id);
 		} catch (Exception ex) {			
 		}
-		return "capacitacion/list";
+		return "redirect:/docente/retrieve/" + id;
 	}
 
 	@PostMapping(value = "/save")

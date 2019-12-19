@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body>
+<section class="about_us padding_top pb-5">
+    <div class="container pb-5">
+        <header th:replace="layout :: frgHeader"></header>
+        <form th:object="${capacitacion}">
+            <input type="hidden" th:field="*{idcapacitacion}" />
+        </form>
+
+        <div  class="d-flex flex-column">
+            <!-- Begin Page Content -->
+            <div class="container">
+                <div class="container-fluid">
+                    <br />
+
+                    <div class="card col-md-12">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-6 ">
+                                    <h3 th:text="${capacitacion.titulo} "></h3>
+                                </div>
+                                <div class="col-6 d-flex flex-row-reverse">
+                                    <div class="form-group px-2">
+                                        <a class="genric-btn danger circle" th:href="@{/capacitacion/delete/} + ${capacitacion.docente.idpersona}">
+                                            <i class="ti-trash"></i>&nbsp; Borrar</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <a class="genric-btn info circle" th:href="@{/docente/retrieve/} + ${capacitacion.docente.idpersona}"><i
+                                                class="ti-back-left"></i>&nbsp; Atras</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="content col-sm-3 bg-light">
+                                            <i class="ti-id-badge"></i> <label class="h5 col-form-label">&nbsp;Aval:</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h5 class="card-text" th:text="${capacitacion.aval.nombre}"></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="content col-sm-3 bg-light">
+                                            <i class="ti-calendar"></i> <label class="h5 col-form-label">&nbsp;Fecha:</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h5 class="card-text" th:text="${#dates.format(capacitacion.fecha,'dd-MM-yyyy')}"></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="content col-sm-3 bg-light">
+                                            <i class="ti-text"></i> <label class="h5 col-form-label">&nbsp;Descripcion:</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h5 class="card-text" th:text="${capacitacion.descripcion}"></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="layout :: frgFooter"></footer>
+</body>
+</html>
