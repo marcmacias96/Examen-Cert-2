@@ -18,7 +18,7 @@
                                 </div>
                                 <h3 class="card-title col-sm-10" th:text="${title}"></h3>
                             </div>
-                            <hr />
+
 
                             <form th:action="@{/capacitacion/save}" th:object="${capacitacion}" method="post">
 
@@ -42,15 +42,15 @@
                                         <label class="h5 col-form-label">&nbsp;Descripcion</label>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input class="single-input" type="text"
+                                        <textarea class="single-input" type="text"
                                                th:field="*{descripcion}"
-                                               th:errorclass="'form-control is-invalid'" /></input>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('descripcion')}"
                                                th:errors="*{descripcion}"></small>
                                     </div>
                                 </div>
-                                <hr />
+
                                 <input type="hidden"  th:field="*{docenteId} "/>
                                 <div class="form-group row">
                                     <div class="content col-sm-3">
@@ -60,16 +60,12 @@
                                     <div class="content col-sm-6">
                                         <input class="single-input" type="number"
                                                th:field="*{numeroHoras}"
-                                               th:errorclass="'form-control is-invalid'" /></textarea>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('numeroHoras')}"
                                                th:errors="*{numeroHoras}"></small>
                                     </div>
                                 </div>
-
-
-                                <hr />
-
                                 <div class="form-group row">
                                     <div class="content col-sm-3">
                                         <i class="ti-email"></i>
@@ -78,14 +74,33 @@
                                     <div class="content col-sm-6">
                                         <input class="single-input" type="date"
                                                th:field="*{fecha}"
-                                               th:errorclass="'form-control is-invalid'" /></textarea>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('fecha')}"
                                                th:errors="*{fecha}"></small>
                                     </div>
                                 </div>
                                 <input type="hidden" th:field="*{idcapacitacion}" />
+                                <div class="form-group row ">
+                                    <div class="content col-sm-3">
+                                        <i class="ti-email"></i>
+                                        <label class="h5 col-form-label">&nbsp;Aval:</label>
+                                    </div>
+                                    <div class="content col-sm-6">
+                                        <select class="default-select" th:field="*{aval.idaval}">
+                                            <option value=0>--Seleccione--</option>
+                                            <option th:each="aval : ${avalList}"
+                                                    th:value="${aval.idaval}"
+                                                    th:text="${aval.nombre}"
+                                                    th:selected="${capacitacion.aval.idaval == aval.idaval}"></option>
+                                        </select>
+                                    </div>
 
+                                    <small class="invalid-feedback"
+                                           th:if="${#fields.hasErrors('aval.idaval')}"
+                                           th:errors="*{aval.idaval}"
+                                    ></small>
+                                </div>
                                 <div class="col-12 d-flex flex-row-reverse">
                                     <a class="genric-btn  danger circle"
                                        th:href="@{/capacitacion/list}">

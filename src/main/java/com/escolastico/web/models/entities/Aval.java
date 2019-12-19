@@ -1,14 +1,9 @@
 package com.escolastico.web.models.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -28,7 +23,18 @@ public class Aval implements Serializable {
 	@Size(max=35)
 	@NotEmpty
 	private String nombre;
-	
+
+	@OneToMany(mappedBy = "aval", fetch = FetchType.LAZY)
+	private List<Capacitacion> capacitacionList;
+
+	public List<Capacitacion> getCapacitacionList() {
+		return capacitacionList;
+	}
+
+	public void setCapacitacionList(List<Capacitacion> capacitacionList) {
+		this.capacitacionList = capacitacionList;
+	}
+
 	public Aval() {
 		super();
 	}

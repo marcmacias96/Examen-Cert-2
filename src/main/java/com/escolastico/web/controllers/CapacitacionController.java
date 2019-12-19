@@ -2,7 +2,10 @@ package com.escolastico.web.controllers;
 
 import javax.validation.Valid;
 
+import com.escolastico.web.models.dao.IAval;
+import com.escolastico.web.models.entities.Aval;
 import com.escolastico.web.models.entities.Docente;
+import com.escolastico.web.models.services.IAvalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,10 +33,15 @@ public class CapacitacionController {
 	@Autowired
 	private IDocenteService srvDoc;
 
+	@Autowired
+	private IAvalService srvAva;
+
 	@GetMapping(value = "/create/{id}")
 	public String create(@PathVariable(value = "id") Long id, Model model) {
 		Capacitacion capacitacion = new Capacitacion();
 		capacitacion.setDocenteId(id);
+		List<Aval> avalList = srvAva.findAll();
+		model.addAttribute("avalList", avalList);
 		model.addAttribute("capacitacion", capacitacion);
 		model.addAttribute("title", "Nuevo registro");
 		return "capacitacion/form";
@@ -49,6 +57,8 @@ public class CapacitacionController {
 
 	@GetMapping(value = "/list/{id}")
 	public String list(@PathVariable(value = "id") Long id, Model model) {
+		List<Capacitacion> capacitacionList = srvCap.findByDocente(id);
+		model.addAttribute("capacitacionList",capacitacionList);
 		return "capacitacion/list";
 	}
 

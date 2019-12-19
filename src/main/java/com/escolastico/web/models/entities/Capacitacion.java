@@ -49,6 +49,18 @@ public class Capacitacion implements Serializable {
 	@ManyToOne
 	private Docente docente;
 
+	@JoinColumn(name = "id_aval", referencedColumnName = "id_aval")
+	@ManyToOne
+	private Aval aval;
+
+	public Aval getAval() {
+		return aval;
+	}
+
+	public void setAval(Aval aval) {
+		this.aval = aval;
+	}
+
 	public Long getDocenteId() {
 		return docenteId;
 	}

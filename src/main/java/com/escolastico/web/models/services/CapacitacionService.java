@@ -40,7 +40,7 @@ public class CapacitacionService implements ICapacitacionService{
 	@Override
 	@Transactional(readOnly=true)
 	public List<Capacitacion> findByDocente(Long id) {
-		return null;  //(List<Capacitacion>) dao.findByDocente(id);
+		return (List<Capacitacion>) dao.findByDocente(id);
 	}
 
 }
