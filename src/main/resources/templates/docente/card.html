@@ -46,7 +46,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="ti-id-badge"></i> <label class="h5 col-form-label">&nbsp;ID Card:</label>
+											<i class="ti-id-badge"></i> <label class="h5 col-form-label">&nbsp;Cedula:</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${docente.cedula}"></h5>
@@ -55,7 +55,19 @@
 								</div>
 							</div>
 							<hr />
-
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group row">
+										<div class="content col-sm-3 bg-light">
+											<i class="ti-id-badge"></i> <label class="h5 col-form-label">&nbsp;Sexo:</label>
+										</div>
+										<div class="col-sm-8">
+											<h5 class="card-text" th:text="${docente.sexo}"></h5>
+										</div>
+									</div>
+								</div>
+							</div>
+							<hr />
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group row">
@@ -90,7 +102,7 @@
 								<div class="col-md-12">
 									<div class="form-group row">
 										<div class="content col-sm-3 bg-light">
-											<i class="ti-email"></i> <label class="h5 col-form-label">&nbsp;Email:</label>
+											<i class="ti-email"></i> <label class="h5 col-form-label">&nbsp;Correo:</label>
 										</div>
 										<div class="col-sm-8">
 											<h5 class="card-text" th:text="${docente.email}"></h5>

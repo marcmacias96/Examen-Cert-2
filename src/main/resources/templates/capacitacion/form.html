@@ -30,7 +30,7 @@
                                     <div class="col-sm-6">
                                         <input class="single-input" type="text"
                                                th:field="*{titulo}"
-                                               th:errorclass="'form-control is-invalid'" /></input>
+                                               th:errorclass="'form-control is-invalid'" />
                                         <small class="invalid-feedback"
                                                th:if="${#fields.hasErrors('titulo')}"
                                                th:errors="*{titulo}"></small>
@@ -103,10 +103,10 @@
                                 </div>
                                 <div class="col-12 d-flex flex-row-reverse">
                                     <a class="genric-btn  danger circle"
-                                       th:href="@{/capacitacion/list}">
-                                        <i class="ti-close"></i>&nbsp; Cancel</a>
+                                       th:href="@{/docente/list}">
+                                        <i class="ti-close"></i>&nbsp; Cancelar</a>
                                     <button class="genric-btn success circle" type="submit">
-                                        <i class="ti-save"></i>&nbsp; Save
+                                        <i class="ti-save"></i>&nbsp; Guardar
                                     </button>
                                 </div>
                             </form>

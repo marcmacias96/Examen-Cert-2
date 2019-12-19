@@ -77,11 +77,12 @@ public class DocenteController {
 			}			
 			service.save(docente);
 			flash.addFlashAttribute("success", "El registro fue guardado con éxito.");
+			return "redirect:/docente/retrieve/" + docente.getIdpersona() ;
 		}
 		catch(Exception ex) {
 			flash.addFlashAttribute("error", "El registro no pudo ser guardado.");
 		}
-		return "redirect:/";		
+		return "redirect:/docene/form";
 	} 
 	
 	@GetMapping(value="/list")

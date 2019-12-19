@@ -56,7 +56,6 @@ public class Docente extends Persona implements Serializable {
 
 	public Long getAge(){
 		LocalDate birthDate =LocalDateTime.ofInstant(getFechaNacimiento().toInstant(), getFechaNacimiento().getTimeZone().toZoneId()).toLocalDate();
-		System.out.println(birthDate);
 		LocalDate now = LocalDate.now();
 		long years = ChronoUnit.YEARS.between(birthDate, now);
 		return  years;

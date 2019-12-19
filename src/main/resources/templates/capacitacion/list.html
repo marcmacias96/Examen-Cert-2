@@ -17,6 +17,7 @@
                     <th class="align-middle text-center"># horas</th>
                     <th class="align-middle text-center">Fecha</th>
                     <th class="align-middle text-center">Aval</th>
+                    <th class="align-middle text-center">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,10 @@
                     <td  class="align-middle text-center" th:text="${cap.numeroHoras}"></td>
                     <td  class="align-middle text-center" th:text="${#dates.format(cap.fecha,'dd-MM-yyyy')}"></td>
                     <td  class="align-middle text-center" th:text="${cap.aval.nombre}"></td>
+                    <td  class="align-middle text-center" ><a title="Editar" class="genric-btn btn-sm info-border circle"  th:href="@{/capacitacion/update/} + ${cap.idcapacitacion}">
+                        <i class="ti-pencil"></i>Editar</a>&nbsp;&nbsp;
+                        <a class="genric-btn btn-sm info-border circle"	title="Ver" th:href="@{/capacitacion/retrieve/} + ${cap.idcapacitacion}"> <i class="ti-hand-point-up"></i> Ver</a></td>
+
                 </tr>
 
                 </tbody>

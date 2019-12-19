@@ -43,7 +43,7 @@ public abstract class Persona {
 	private Calendar fechaNacimiento;
 	
 	@Column(name="sexo")
-	@Size(max=1)
+	@Size(max=10)
 	@NotEmpty
 	private String sexo;
 	

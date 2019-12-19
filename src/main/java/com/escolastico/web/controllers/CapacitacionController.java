@@ -50,6 +50,8 @@ public class CapacitacionController {
 	@GetMapping(value = "/update/{id}")
 	public String update(@PathVariable(value = "id") Long id, Model model) {
 		Capacitacion capacitacion = srvCap.findById(id);
+		List<Aval> avalList = srvAva.findAll();
+		model.addAttribute("avalList", avalList);
 		model.addAttribute("capacitacion", capacitacion);
 		model.addAttribute("title", "Actualización de registro");
 		return "capacitacion/form";
