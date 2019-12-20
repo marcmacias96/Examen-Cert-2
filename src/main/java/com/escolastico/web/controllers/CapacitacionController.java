@@ -99,15 +99,18 @@ public class CapacitacionController {
 				return "capacitacion/form";
 			}
 			Docente docente = srvDoc.findById(capacitacion.getDocenteId());
-			capacitacion.setDocente(docente);
+			if(capacitacion.getDocente() == null){
 
+				capacitacion.setDocente(docente);
+			}
+			System.out.println(capacitacion.getIdcapacitacion());
 			srvCap.save(capacitacion);
 						
 			return "redirect:/docente/retrieve/" + docente.getIdpersona() ;
 			
 		} catch (Exception ex) {			
 			model.addAttribute("title","Error al guardar el registro");
-
+			System.out.println(ex);
 			return "capacitacion/form";
 		}		
 	}
